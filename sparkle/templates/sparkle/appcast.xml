@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"  xmlns:dc="http://purl.org/dc/elements/1.1/">
     <channel>
         <title>{{ application.name }}</title>
-        <link>http://{{ site.domain }}{% url sparkle_application_appcast application.id %}</link>
+        <link>http://{{ site.domain }}{% url sparkle_application_appcast_slug application.slug %}</link>
         <description>Most recent changes with links to updates.</description>
         <language>en</language>
         {% for version in versions %}

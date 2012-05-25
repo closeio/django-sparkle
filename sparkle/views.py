@@ -2,10 +2,13 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.sites.models import Site
 from sparkle.models import Application, Version, SystemProfileReport, SystemProfileReportRecord
 
-def appcast(request, application_id):
+def appcast(request, application_id=None, slug=None):
     """Generate the appcast for the given application while recording any system profile reports"""
     
-    application = get_object_or_404(Application, pk=application_id)
+    if application_id != None:
+        application = get_object_or_404(Application, pk=application_id)
+    else:
+        application = get_object_or_404(Application, slug=slug)
     
     # if there are get parameters from the system profiling abilities
     if len(request.GET):
